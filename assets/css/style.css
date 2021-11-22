@@ -1,0 +1,426 @@
+/*-- loading fonts --*/
+
+/* lato-regular - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""), url("../fonts/lato-v20-latin-regular.woff2") format("woff2");
+}
+
+/* lato-italic - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 400;
+  src: local(""), url("../fonts/lato-v20-latin-italic.woff2") format("woff2");
+}
+
+/* lato-700 - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: local(""), url("../fonts/lato-v20-latin-700.woff2") format("woff2");
+}
+
+/* lato-700italic - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 700;
+  src: local(""), url("../fonts/lato-v20-latin-700italic.woff2") format("woff2");
+}
+
+/*-- generel settings --*/
+:root {
+  --standard-color-1: #73561c;
+  --standard-color-2: #003f03;
+
+  --standard-text-color-main: #000;
+  --standard-text-color-main-dark: #fff;
+  --standard-text-color-link: #5f4209;
+  --standard-text-color-hover: darkorange;
+
+  --standard-background-color: #fff;
+  --standard-background-color-gray: #f5f5f5;
+  --standard-background-color-pink: #e8a6b6;
+  --standard-background-color-dark: #000;
+
+  --standard-padding-1: 1.2rem;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+a {
+  color: var(--standard-text-color-main);
+  transition: color 0.4s linear;
+  text-decoration: none;
+}
+a[target="_blank"] {
+  text-decoration: none;
+}
+a[target="_blank"]::before {
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+  margin-right: 4px;
+}
+a:hover {
+  color: var(--standard-text-color-hover);
+}
+html,
+body {
+  _overflow-x: hidden;
+}
+html {
+  font-size: 20px;
+}
+body {
+  background-color: var(--standard-background-color);
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: var(--standard-text-color-main);
+  position: relative;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+body > header,
+body > main,
+body > footer {
+  _padding: var(--standard-padding-1);
+}
+main {
+  position: relative;
+}
+.main-inner,
+.header-inner,
+.section-inner {
+  _max-width: 1280px;
+  max-width: 32rem;
+  margin: 0 auto;
+  _position: relative;
+}
+.section-inner {
+  padding: 2rem 1.5rem;
+}
+
+.logo-item-link {
+  grid-area: logo;
+  grid-column-start: 1;
+  grid-column-end: col3-start;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  /*
+  grid-column-start: 1;
+  grid-column-end: four;
+  grid-row-start: row1-start;
+  grid-row-end: 2;
+  */
+}
+.standard-link-item {
+  grid-area: link-item;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  _max-width: 300px;
+  _justify-self: start;
+  _display: inline-block;
+  /*
+  grid-column-start: 1;
+  grid-column-end: span col4-start;
+  grid-row-start: 2;
+  grid-row-end: span 1;
+  */
+}
+/*
+_.standard-link-item-1 {
+nav :nth-child(1 of a.standard-link-item) {
+*/
+nav a.standard-link-item:nth-of-type(2) {
+  _grid-column-start: 1;
+  _grid-column-end: span col2-start;
+  grid-column: 1 / span 1;
+
+  _background-color: #ffcc22;
+}
+/*
+.standard-link-item-2 {
+*/
+nav a.standard-link-item:nth-of-type(3) {
+  _grid-column-start: 2;
+  _grid-column-end: col3-start;
+  grid-column: 2 / span 1;
+  _grid-row-start: 2;
+}
+/*
+.standard-link-item-3 {
+*/
+nav a.standard-link-item:nth-of-type(4) {
+  _grid-column-start: 3;
+  _grid-column-end: col4-start;
+  grid-column: 3 / span 1;
+  _grid-row-start: 2;
+}
+nav a.standard-link-item:last-of-type {
+  justify-self: end;
+}
+
+.header-inner nav {
+  padding: 0.5rem 0.8rem;
+  display: grid;
+  justify-content: space-between;
+  _justify-items: start;
+  _grid-column-gap: 1.5rem;
+  grid-column-gap: 0;
+  _grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 33% 33% 33%;
+  _border: 2px solid #000;
+  _grid-template-columns: 50px 50px 50px;
+  grid-template-rows: auto;
+
+  grid-template-areas:
+    "logo logo logo"
+    "link-item link-item link-item";
+}
+.header-inner nav a {
+  font-size: 0.8rem;
+}
+.header-top-logo {
+  display: block;
+}
+.logo-item-link svg {
+  max-width: 6rem;
+}
+
+.main-inner {
+  _background-color: rgba(255, 255, 255, 0.8);
+  _padding: 1.5rem;
+}
+
+body > header {
+  _display: block;
+  _position: relative;
+  _position: fixed;
+  _top: 0;
+  _left: 0;
+}
+/*
+I want: The Logo-nav-bar and the top-header-image, with h1 and teaser, in the top header.
+I want also: The Logo-nav-bar as sticky, but the header-Logo not sticky.
+This doesn't work, just with fixed, but not with sticky. So I decided to create a second header for the header-Image.
+*/
+header.header-top {
+  _position: fixed;
+  position: sticky;
+  top: 0;
+  background-color: var(--standard-background-color);
+  z-index: 10;
+  _left: 0;
+}
+header.header-image {
+  position: relative;
+}
+.header-teaser-box {
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+.without-margin-to-bottom {
+  margin: 0;
+}
+hr {
+  margin: 3rem 0 3rem 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--standard-text-color-main);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote p {
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+h3 {
+  font-size: 1.4rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+
+.primary-alternative-text-color {
+  color: var(--standard-color-2);
+}
+
+figure {
+  margin: 0;
+}
+blockquote {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 1.1rem;
+  color: #7e0038;
+  position: relative;
+}
+/*-- because I want the text in the following lines not under the bracket --*/
+blockquote::before {
+  content: "”";
+  font-size: 2.8rem;
+  position: absolute;
+  top: -12px;
+  left: 0;
+}
+
+blockquote {
+  quotes: "“" "”" "‘" "’";
+}
+
+blockquote p:last-of-type::after {
+  content: "“";
+}
+blockquote + figcaption {
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+article {
+  margin-bottom: 1rem;
+}
+
+.bck-standard-gray {
+  background-color: var(--standard-background-color-gray);
+}
+.bck-standard-pink {
+  background-color: var(--standard-background-color-pink);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+figure,
+figure img {
+  line-height: 1px;
+}
+
+.button {
+  border: 3px solid #000;
+  border-radius: 9px;
+  text-decoration: none;
+  padding: 0.75rem 1.75rem;
+  display: inline-block;
+}
+
+.text-centered article {
+  text-align: center;
+}
+
+.container-teaser-outer {
+  display: flex;
+}
+.container-teaser-inner {
+  border: 2px solid #636363;
+  border-radius: 7px;
+  padding: 5px 5px 0 5px;
+}
+
+/*-- breakpoints --*/
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 40px;
+  }
+  /*-- Logo und nav-Leiste --*/
+  .logo-item-link {
+    align-self: center;
+  }
+  .standard-link-item {
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+  nav a.standard-link-item {
+    font-size: 0.5rem;
+    justify-content: center;
+    align-self: center;
+    _line-height: 100%;
+    _vertical-align: middle;
+  }
+  nav a.standard-link-item:nth-of-type(2) {
+    grid-column: 2 / span 1;
+    _background-color: #ffcc22;
+  }
+  /*
+  .standard-link-item-2 {
+  */
+  nav a.standard-link-item:nth-of-type(3) {
+    grid-column: 3 / span 1;
+  }
+  /*
+  .standard-link-item-3 {
+  */
+  nav a.standard-link-item:nth-of-type(4) {
+    grid-column: 4 / span 1;
+  }
+
+  .header-inner nav {
+    padding: 0.5rem 0;
+    grid-column-gap: 1.2rem;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-areas: "logo link-item link-item link-item";
+  }
+  /*-- ende Logo und Nav-Leiste --*/
+  .section-inner {
+    padding: 2.4rem 0;
+  }
+  .header-top-logo {
+    display: inline-block;
+  }
+  .header-teaser-box p,
+  .header-teaser-box h1 {
+    color: #fff;
+  }
+  .header-teaser-box p {
+    margin-bottom: 0;
+  }
+  .header-teaser-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding-left: 3rem;
+    _display: flex;
+
+    background-color: transparent;
+  }
+  .header-teaser-box .section-inner {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .header-teaser-box article {
+    margin-bottom: 0;
+  }
+}
