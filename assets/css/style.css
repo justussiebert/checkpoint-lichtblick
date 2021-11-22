@@ -92,6 +92,13 @@ body > main,
 body > footer {
   _padding: var(--standard-padding-1);
 }
+
+body > main,
+main > section,
+footer.footer-main {
+  margin-top: 2rem;
+}
+
 main {
   position: relative;
 }
@@ -318,6 +325,13 @@ article {
 .bck-standard-green {
   background-color: var(--standard-background-color-green);
 }
+.bck-standard-dark {
+  background-color: var(--standard-background-color-dark);
+}
+.bck-standard-dark,
+.bck-standard-dark a {
+  color: #fff;
+}
 
 img {
   max-width: 100%;
@@ -345,6 +359,7 @@ figure img {
 }
 .container-teaser-inner {
   position: relative;
+  display: inline-block;
   _border: 2px solid #636363;
   _border-radius: 7px;
   _padding: 5px 5px 0 5px;
@@ -354,6 +369,19 @@ figure img {
 .container-teaser-inner + .container-teaser-inner {
   margin-top: 1rem;
 }
+/*
+.container-teaser-inner-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #636363;
+  border-radius: 7px;
+  z-index: 6;
+}
+*/
+
 .container-teaser-inner::after {
   content: "";
   position: absolute;
@@ -363,11 +391,14 @@ figure img {
   height: 100%;
   border: 2px solid #636363;
   border-radius: 7px;
+  z-index: 3;
 }
 
 .container-teaser-inner-text {
+  position: relative;
   padding: 0 0.75rem 1rem 0.75rem;
   text-align: left;
+  z-index: 8;
 }
 .container-teaser-inner-text p:last-of-type {
   margin-bottom: 0;
@@ -385,6 +416,40 @@ figure img {
 
 .link-teaser {
   border-bottom: 3px solid currentColor;
+}
+
+/*-- begin footer --*/
+footer.footer-main {
+  font-size: 0.75rem;
+}
+
+ul.footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  _justify-content: space-between;
+  row-gap: 1rem;
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+footer.footer-main p {
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0.5;
+}
+ul.footer-nav li a {
+  border-bottom: 2px solid currentColor;
+  opacity: 1;
+  transition: opacity 0.6s linear;
+}
+ul.footer-nav li a:hover {
+  opacity: 0.5;
+}
+ul.footer-nav li + li {
+  _margin-top: 0.75rem;
 }
 
 /*-- breakpoints --*/
@@ -480,5 +545,14 @@ figure img {
   }
   .header-teaser-box article {
     margin-bottom: 0;
+  }
+
+  ul.footer-nav {
+    flex-direction: row;
+    column-gap: 1rem;
+    justify-content: space-between;
+  }
+  footer.footer-main {
+    font-size: 0.5rem;
   }
 }
