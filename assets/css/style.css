@@ -45,6 +45,7 @@
   --standard-background-color: #fff;
   --standard-background-color-gray: #f5f5f5;
   --standard-background-color-pink: #e8a6b6;
+  --standard-background-color-green: #9eb8ae;
   --standard-background-color-dark: #000;
 
   --standard-padding-1: 1.2rem;
@@ -98,7 +99,8 @@ main {
 .header-inner,
 .section-inner {
   _max-width: 1280px;
-  max-width: 32rem;
+  _max-width: 32rem;
+  max-width: 35rem;
   margin: 0 auto;
   _position: relative;
 }
@@ -256,16 +258,16 @@ blockquote p {
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 h2 {
   font-size: 1.6rem;
 }
 h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 h4 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .primary-alternative-text-color {
@@ -313,6 +315,9 @@ article {
 .bck-standard-pink {
   background-color: var(--standard-background-color-pink);
 }
+.bck-standard-green {
+  background-color: var(--standard-background-color-green);
+}
 
 img {
   max-width: 100%;
@@ -336,12 +341,50 @@ figure img {
 }
 
 .container-teaser-outer {
-  display: flex;
+  display: block;
 }
 .container-teaser-inner {
+  position: relative;
+  _border: 2px solid #636363;
+  _border-radius: 7px;
+  _padding: 5px 5px 0 5px;
+  padding: 0 10px 0 0;
+  _z-index: 3;
+}
+.container-teaser-inner + .container-teaser-inner {
+  margin-top: 1rem;
+}
+.container-teaser-inner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: 2px solid #636363;
   border-radius: 7px;
-  padding: 5px 5px 0 5px;
+}
+
+.container-teaser-inner-text {
+  padding: 0 0.75rem 1rem 0.75rem;
+  text-align: left;
+}
+.container-teaser-inner-text p:last-of-type {
+  margin-bottom: 0;
+}
+
+.container-teaser-inner figure {
+  border-radius: 7px 7px 0 0;
+  overflow: hidden;
+  _transform: translate(-0.4rem, 0.4rem);
+  margin-left: -11px;
+  margin-top: 11px;
+  margin-bottom: 1.5rem;
+  _z-index: 2;
+}
+
+.link-teaser {
+  border-bottom: 3px solid currentColor;
 }
 
 /*-- breakpoints --*/
@@ -411,6 +454,21 @@ figure img {
     _display: flex;
 
     background-color: transparent;
+  }
+  .container-teaser-outer {
+    display: flex;
+    justify-content: space-between;
+    /*-- items sollen nicht alle gleich hoch sein (stretch), deshalb flex-start --*/
+    align-items: flex-start;
+    column-gap: 1.25rem;
+  }
+  .container-teaser-inner {
+    _flex-grow: 1;
+    /*-- umd die 2 container gleich breit u machen --*/
+    flex-basis: 50%;
+  }
+  .container-teaser-inner + .container-teaser-inner {
+    margin-top: 0;
   }
   .header-teaser-box .section-inner {
     padding: 0;
