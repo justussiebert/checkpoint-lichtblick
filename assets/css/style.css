@@ -40,7 +40,7 @@
   --standard-text-color-main: #000;
   --standard-text-color-main-dark: #fff;
   --standard-text-color-link: #5f4209;
-  --standard-text-color-hover: darkorange;
+  --standard-text-color-hover: #fcbc67;
 
   --standard-background-color: #fff;
   --standard-background-color-gray: #f5f5f5;
@@ -63,6 +63,7 @@ a {
 a[target="_blank"] {
   text-decoration: none;
 }
+/*-- maybe used later --*/
 a[target="_blank"]::before {
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
   margin-right: 4px;
@@ -114,7 +115,7 @@ main {
 .section-inner {
   padding: 2rem 1.5rem;
 }
-
+/*-- header-nav-bar with Logo  --*/
 .logo-item-link {
   grid-area: logo;
   grid-column-start: 1;
@@ -184,13 +185,14 @@ nav a.standard-link-item:last-of-type {
   grid-column-gap: 0;
   _grid-template-columns: 1fr 1fr 1fr;
   grid-template-columns: 33% 33% 33%;
-  _border: 2px solid #000;
-  _grid-template-columns: 50px 50px 50px;
+
   grid-template-rows: auto;
 
   grid-template-areas:
     "logo logo logo"
     "link-item link-item link-item";
+  _border: 2px solid #000;
+  _grid-template-columns: 50px 50px 50px;
 }
 .header-inner nav a {
   font-size: 0.8rem;
@@ -202,18 +204,6 @@ nav a.standard-link-item:last-of-type {
   max-width: 6rem;
 }
 
-.main-inner {
-  _background-color: rgba(255, 255, 255, 0.8);
-  _padding: 1.5rem;
-}
-
-body > header {
-  _display: block;
-  _position: relative;
-  _position: fixed;
-  _top: 0;
-  _left: 0;
-}
 /*
 I want: The Logo-nav-bar and the top-header-image, with h1 and teaser, in the top header.
 I want also: The Logo-nav-bar as sticky, but the header-Logo not sticky.
@@ -231,19 +221,12 @@ header.header-top {
 header.header-image {
   position: relative;
 }
-.header-teaser-box {
-}
 
-p {
-  margin-top: 0;
-  margin-bottom: 1.2rem;
-}
-.without-margin-to-bottom {
-  margin: 0;
-}
+/*-- hr: not used yet, maybe later --*/
 hr {
   margin: 3rem 0 3rem 0;
 }
+/*-- headlines, and other standard-formats --*/
 h1,
 h2,
 h3,
@@ -278,13 +261,19 @@ h4 {
   font-size: 1.1rem;
 }
 
+p {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+.without-margin-to-bottom {
+  margin: 0;
+}
+
 .primary-alternative-text-color {
   color: var(--standard-color-2);
 }
 
-figure {
-  margin: 0;
-}
+/*-- blockquote: not used yet, maybe later --*/
 blockquote {
   margin: 0;
   padding-left: 20px;
@@ -312,11 +301,12 @@ blockquote + figcaption {
   font-style: italic;
   font-size: 0.8rem;
 }
-
+/*--  --*/
 article {
   margin-bottom: 1rem;
 }
 
+/*-- different bck-classes --*/
 .bck-standard-gray {
   background-color: var(--standard-background-color-gray);
 }
@@ -333,10 +323,13 @@ article {
 .bck-standard-dark a {
   color: #fff;
 }
-
+/*-- img, button --*/
 img {
   max-width: 100%;
   height: auto;
+}
+figure {
+  margin: 0;
 }
 figure,
 figure img {
@@ -349,8 +342,23 @@ figure img {
   text-decoration: none;
   padding: 0.75rem 1.75rem;
   display: inline-block;
+  color: var(--standard-text-color-main);
+  _background-image: linear-gradient(transparent, transparent);
+  _transition: background-image 0.6s linear, color 0.6s linear;
+  background-color: transparent;
+  transition: color 0.6s linear, transform 0.6s ease-out,
+    background-color 0.6s linear;
+  _transition: color 0.6s linear;
+}
+/*-- I wanted an gradient-hover-effect, but this doesn't work without dirty workarounds --*/
+.button:hover {
+  _background-image: linear-gradient(#000, #fff);
+  color: var(--standard-text-color-hover);
+  background-color: #000;
+  transform: scale(1.25, 1.25);
 }
 
+/*-- info or teaser-boxes, with frame --*/
 .text-centered article {
   text-align: center;
 }
@@ -416,7 +424,14 @@ figure img {
 }
 
 .link-teaser {
+  position: relative;
+  display: inline-block;
   border-bottom: 3px solid currentColor;
+  _transform: rotate(12deg);
+  transition: transform 0.2s linear, color 0.2s linear;
+}
+.link-teaser:hover {
+  transform: rotate(10deg);
 }
 
 /*-- begin footer --*/
@@ -452,8 +467,9 @@ ul.footer-nav li a:hover {
 ul.footer-nav li + li {
   _margin-top: 0.75rem;
 }
+/*-- end footer --*/
 
-/*-- breakpoints --*/
+/*-- breakpoints. just 1 for the moment, could be more, in further steps. Or maybe it works already by changing this one e.g. to 1200 or so... --*/
 
 @media screen and (min-width: 768px) {
   html {
