@@ -355,6 +355,13 @@ ul.footer-nav li a:hover {
   html {
     font-size: 40px;
   }
+  h1 {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+  .header-teaser-box p {
+    font-size: 0.8rem;
+  }
   /*-- Logo und nav-Leiste --*/
   .logo-item-link {
     align-self: center;
@@ -441,5 +448,15 @@ ul.footer-nav li a:hover {
   }
   footer.footer-main {
     font-size: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .header-teaser-box p {
+    font-size: 1rem;
   }
 }
