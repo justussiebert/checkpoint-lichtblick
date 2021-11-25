@@ -47,8 +47,6 @@
   --standard-background-color-pink: #e8a6b6;
   --standard-background-color-green: #9eb8ae;
   --standard-background-color-dark: #000;
-
-  --standard-padding-1: 1.2rem;
 }
 *,
 *::after,
@@ -71,10 +69,7 @@ a[target="_blank"]::before {
 a:hover {
   color: var(--standard-text-color-hover);
 }
-html,
-body {
-  _overflow-x: hidden;
-}
+
 html {
   font-size: 20px;
 }
@@ -86,12 +81,6 @@ body {
   position: relative;
   font-size: 1rem;
   line-height: 1.4;
-}
-
-body > header,
-body > main,
-body > footer {
-  _padding: var(--standard-padding-1);
 }
 
 body > main,
@@ -106,11 +95,8 @@ main {
 .main-inner,
 .header-inner,
 .section-inner {
-  _max-width: 1280px;
-  _max-width: 32rem;
   max-width: 35rem;
   margin: 0 auto;
-  _position: relative;
 }
 .section-inner {
   padding: 2rem 1.5rem;
@@ -122,55 +108,23 @@ main {
   grid-column-end: col3-start;
   grid-row-start: 1;
   grid-row-end: 1;
-  /*
-  grid-column-start: 1;
-  grid-column-end: four;
-  grid-row-start: row1-start;
-  grid-row-end: 2;
-  */
 }
 .standard-link-item {
   grid-area: link-item;
   grid-row-start: 2;
   grid-row-end: 2;
-  _max-width: 300px;
-  _justify-self: start;
-  _display: inline-block;
-  /*
-  grid-column-start: 1;
-  grid-column-end: span col4-start;
-  grid-row-start: 2;
-  grid-row-end: span 1;
-  */
 }
-/*
-_.standard-link-item-1 {
-nav :nth-child(1 of a.standard-link-item) {
-*/
-nav a.standard-link-item:nth-of-type(2) {
-  _grid-column-start: 1;
-  _grid-column-end: span col2-start;
-  grid-column: 1 / span 1;
 
-  _background-color: #ffcc22;
+nav a.standard-link-item:nth-of-type(2) {
+  grid-column: 1 / span 1;
 }
-/*
-.standard-link-item-2 {
-*/
+
 nav a.standard-link-item:nth-of-type(3) {
-  _grid-column-start: 2;
-  _grid-column-end: col3-start;
   grid-column: 2 / span 1;
-  _grid-row-start: 2;
 }
-/*
-.standard-link-item-3 {
-*/
+
 nav a.standard-link-item:nth-of-type(4) {
-  _grid-column-start: 3;
-  _grid-column-end: col4-start;
   grid-column: 3 / span 1;
-  _grid-row-start: 2;
 }
 nav a.standard-link-item:last-of-type {
   justify-self: end;
@@ -180,19 +134,12 @@ nav a.standard-link-item:last-of-type {
   padding: 0.5rem 0.8rem;
   display: grid;
   justify-content: space-between;
-  _justify-items: start;
-  _grid-column-gap: 1.5rem;
   grid-column-gap: 0;
-  _grid-template-columns: 1fr 1fr 1fr;
   grid-template-columns: 33% 33% 33%;
-
   grid-template-rows: auto;
-
   grid-template-areas:
     "logo logo logo"
     "link-item link-item link-item";
-  _border: 2px solid #000;
-  _grid-template-columns: 50px 50px 50px;
 }
 .header-inner nav a {
   font-size: 0.8rem;
@@ -200,32 +147,21 @@ nav a.standard-link-item:last-of-type {
 .header-top-logo {
   display: block;
 }
-.logo-item-link svg {
+svg.logo-svg {
   max-width: 6rem;
 }
 
-/*
-I want: The Logo-nav-bar and the top-header-image, with h1 and teaser, in the top header.
-I want also: The Logo-nav-bar as sticky, but the header-Logo not sticky.
-This doesn't work, just with fixed, but not with sticky. So I decided to create a second header for the header-Image.
-*/
 header.header-top {
-  _position: fixed;
   position: sticky;
   top: 0;
   box-shadow: 0 3px 3px 2px rgba(95, 71, 71, 0.2);
   background-color: var(--standard-background-color);
   z-index: 10;
-  _left: 0;
 }
 header.header-image {
   position: relative;
 }
 
-/*-- hr: not used yet, maybe later --*/
-hr {
-  margin: 3rem 0 3rem 0;
-}
 /*-- headlines, and other standard-formats --*/
 h1,
 h2,
@@ -273,35 +209,6 @@ p {
   color: var(--standard-color-2);
 }
 
-/*-- blockquote: not used yet, maybe later --*/
-blockquote {
-  margin: 0;
-  padding-left: 20px;
-  font-size: 1.1rem;
-  color: #7e0038;
-  position: relative;
-}
-/*-- because I want the text in the following lines not under the bracket --*/
-blockquote::before {
-  content: "”";
-  font-size: 2.8rem;
-  position: absolute;
-  top: -12px;
-  left: 0;
-}
-
-blockquote {
-  quotes: "“" "”" "‘" "’";
-}
-
-blockquote p:last-of-type::after {
-  content: "“";
-}
-blockquote + figcaption {
-  font-style: italic;
-  font-size: 0.8rem;
-}
-/*--  --*/
 article {
   margin-bottom: 1rem;
 }
@@ -343,23 +250,20 @@ figure img {
   padding: 0.75rem 1.75rem;
   display: inline-block;
   color: var(--standard-text-color-main);
-  _background-image: linear-gradient(transparent, transparent);
-  _transition: background-image 0.6s linear, color 0.6s linear;
   background-color: transparent;
   transition: color 0.6s linear, transform 0.6s ease-out,
     background-color 0.6s linear;
-  _transition: color 0.6s linear;
 }
 /*-- I wanted an gradient-hover-effect, but this doesn't work without dirty workarounds --*/
 .button:hover {
-  _background-image: linear-gradient(#000, #fff);
   color: var(--standard-text-color-hover);
   background-color: #000;
   transform: scale(1.25, 1.25);
 }
 
 /*-- info or teaser-boxes, with frame --*/
-.text-centered article {
+.text-centered article,
+article.text-centered {
   text-align: center;
 }
 
@@ -369,29 +273,13 @@ figure img {
 .container-teaser-inner {
   position: relative;
   display: inline-block;
-  _border: 2px solid #636363;
-  _border-radius: 7px;
-  _padding: 5px 5px 0 5px;
   padding: 0 10px 0 0;
-  _z-index: 3;
 }
 .container-teaser-inner + .container-teaser-inner {
   margin-top: 1rem;
 }
-/*
-.container-teaser-inner-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #636363;
-  border-radius: 7px;
-  z-index: 6;
-}
-*/
 
-.container-teaser-inner::after {
+.container-teaser-inner::before {
   content: "";
   position: absolute;
   top: 0;
@@ -400,15 +288,14 @@ figure img {
   height: 100%;
   border: 2px solid #636363;
   border-radius: 7px;
-  z-index: 3;
 }
 
 .container-teaser-inner-text {
   position: relative;
   padding: 0 0.75rem 1rem 0.75rem;
   text-align: left;
-  z-index: 8;
 }
+
 .container-teaser-inner-text p:last-of-type {
   margin-bottom: 0;
 }
@@ -416,18 +303,15 @@ figure img {
 .container-teaser-inner figure {
   border-radius: 7px 7px 0 0;
   overflow: hidden;
-  _transform: translate(-0.4rem, 0.4rem);
   margin-left: -11px;
   margin-top: 11px;
   margin-bottom: 1.5rem;
-  _z-index: 2;
 }
 
 .link-teaser {
   position: relative;
   display: inline-block;
   border-bottom: 3px solid currentColor;
-  _transform: rotate(12deg);
   transition: transform 0.2s linear, color 0.2s linear;
 }
 .link-teaser:hover {
@@ -443,11 +327,9 @@ ul.footer-nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  _justify-content: space-between;
   row-gap: 1rem;
   margin: 0;
   padding: 0;
-
   list-style-type: none;
 }
 
@@ -464,12 +346,10 @@ ul.footer-nav li a {
 ul.footer-nav li a:hover {
   opacity: 0.5;
 }
-ul.footer-nav li + li {
-  _margin-top: 0.75rem;
-}
+
 /*-- end footer --*/
 
-/*-- breakpoints. just 1 for the moment, could be more, in further steps. Or maybe it works already by changing this one e.g. to 1200 or so... --*/
+/*-- breakpoints --*/
 
 @media screen and (min-width: 768px) {
   html {
@@ -487,27 +367,20 @@ ul.footer-nav li + li {
     font-size: 0.5rem;
     justify-content: center;
     align-self: center;
-    _line-height: 100%;
-    _vertical-align: middle;
   }
   nav a.standard-link-item:nth-of-type(2) {
     grid-column: 2 / span 1;
-    _background-color: #ffcc22;
   }
-  /*
-  .standard-link-item-2 {
-  */
+
   nav a.standard-link-item:nth-of-type(3) {
     grid-column: 3 / span 1;
   }
-  /*
-  .standard-link-item-3 {
-  */
+
   nav a.standard-link-item:nth-of-type(4) {
     grid-column: 4 / span 1;
   }
 
-  .header-inner nav {
+  nav.nav-header {
     padding: 0.5rem 0;
     grid-column-gap: 1.2rem;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -533,8 +406,6 @@ ul.footer-nav li + li {
     left: 0;
     height: 100%;
     padding-left: 3rem;
-    _display: flex;
-
     background-color: transparent;
   }
   .container-teaser-outer {
@@ -545,8 +416,7 @@ ul.footer-nav li + li {
     column-gap: 1.25rem;
   }
   .container-teaser-inner {
-    _flex-grow: 1;
-    /*-- umd die 2 container gleich breit u machen --*/
+    /*-- um die 2 container gleich breit zu machen --*/
     flex-basis: 50%;
   }
   .container-teaser-inner + .container-teaser-inner {
